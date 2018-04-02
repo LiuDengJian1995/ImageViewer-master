@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/image_show"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <CheckBox
+                android:id="@+id/cb_colse_viewer_anim"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:checked="true"
+                android:text="进入退出图片查看器时缩放在图片控件上的动画" />
+
+            <CheckBox
+                android:id="@+id/cb_viewer_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="右滑显示加载更多（仿淘宝）" />
+
+            <CheckBox
+                android:id="@+id/cb_viewer_item_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="右滑加载更多(自定义布局继承MoreViewInterface)" />
+
+
+            <CheckBox
+                android:id="@+id/cb_viewer_adapter_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="覆盖在图片上的布局(多张图片时默认底部圆形指示器布局)" />
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="布局中的指示器位置:  "
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <RadioGroup
+                    android:id="@+id/radio_indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/btn_indicator_null"
+                        style="@style/common_radio_group"
+                        android:checked="true"
+                        android:text="无指示器" />
+
+                    <RadioButton
+                        android:id="@+id/btn_indicator_number_top"
+                        style="@style/common_radio_group"
+                        android:text="顶部数字指示器" />
+
+                    <RadioButton
+                        android:id="@+id/btn_indicator_number_bottom"
+                        style="@style/common_radio_group"
+                        android:text="底部数字指示器" />
+
+                    <RadioButton
+                        android:id="@+id/btn_indicator_round_top"
+                        style="@style/common_radio_group"
+                        android:text="顶部圆形指示器" />
+
+                    <RadioButton
+                        android:id="@+id/btn_indicator_round_bottom"
+                        style="@style/common_radio_group"
+                        android:text="底部圆形指示器" />
+
+                </RadioGroup>
+            </android.support.v7.widget.LinearLayoutCompat>
+
+
+
+            <CheckBox
+                android:id="@+id/cb_viewer_adapter_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="覆盖在图片上的布局(自定义布局需要继承ImageViewerAdapter)" />
+
+            <CheckBox
+                android:id="@+id/cb_viewer_adapter_click"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="覆盖在图片上的布局自定义点击事件" />
+
+            <CheckBox
+                android:id="@+id/cb_viewer_adapter_longClick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="覆盖在图片上的布局自定义长按事件" />
+
+
+            <CheckBox
+                android:id="@+id/cb_viewer_load"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="图片加载器（默认实现DefaultImageLoad、自定义需要继承ImageLoad）" />
+
+
+            <CheckBox
+                android:id="@+id/cb_viewer_loading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="图片加载时的动画（默认实现DefaultProgressBarGet、自定义需要继承ProgressViewGet）" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="多张图片时的滑动动画请返回首页选择多张图片查看" />
+        </android.support.v7.widget.LinearLayoutCompat>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.v7.widget.LinearLayoutCompat>

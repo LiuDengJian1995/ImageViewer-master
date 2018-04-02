@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_null"
+        android:title="无动画"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_cube"
+        android:title="CubeTransformer"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_depthPage"
+        android:title="DepthPageTransformer"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_gallery"
+        android:title="GalleryTransformer"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_rotateDownPage"
+        android:title="RotateDownPageTransformer"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_viewpager"
+        android:title="ViewpagerTransformAnim"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_zoomOutPage"
+        android:title="ZoomOutPageTransformer"
+        app:showAsAction="never" />
+</menu>
