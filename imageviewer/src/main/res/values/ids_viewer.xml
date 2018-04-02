@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--右滑查看更多-->
+    <item name="more_layout" type="id" />
+    <item name="more_text" type="id" />
+    <item name="more_image" type="id" />
+
+    <!--指示器布局-->
+    <item name="relative_layout" type="id" />
+    <item name="top_panel" type="id" />
+    <item name="top_panel_cancel" type="id" />
+    <item name="page_indicator" type="id" />
+</resources>
