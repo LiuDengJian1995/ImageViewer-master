@@ -1,6 +1,8 @@
 # ImageViewer-master
 一个仿微信仿淘宝的图片查看器，支持拖动图片手势返回 ，支持右滑查看详情
 
+##### 不会做动态图、具体demo 请下载：[ImageViewer.apk](browse/ImageViewer.apk)</br>
+
 ## 使用方法
 ```
  ImageViewer.with(context)
