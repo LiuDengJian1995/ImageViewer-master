@@ -1,7 +1,32 @@
 # ImageViewer-master
-一个仿微信仿淘宝的图片查看器，支持拖动图片手势返回 ，支持右滑查看详情
+一个仿微信、仿淘宝的图片查看器，参考了[ImageTrans](https://github.com/wufenglincheng/ImageTrans)，支持拖动图片手势返回 ，支持右滑查看详情
 
 ##### 不会做动态图、具体demo 请下载：[ImageViewer.apk](browse/ImageViewer.apk)</br>
+
+## 使用步骤
+
+#### Step 1.依赖banner
+Gradle 
+```groovy
+dependencies{
+    compile 'com.github.LiuDengJian1995:ImageViewer-master:V1.0'  //最新版本
+}
+```
+或者引用本地lib
+```groovy
+compile project(':imageviewer')
+```
+
+
+#### Step 2.添加权限到你的 AndroidManifest.xml
+```xml
+<!-- 网络权限 -->
+<uses-permission android:name="android.permission.INTERNET" /> 
+
+<!--获取手机读写权限-->
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+```
 
 ## 使用方法
 ```
