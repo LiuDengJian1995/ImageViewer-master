@@ -33,7 +33,7 @@
                      .show();
 ```
 
-```
+
 |ImageViewer方法|说明|
 |:---|:---|
 |setImageList(List<String>)|设置图片地址 |
@@ -47,9 +47,9 @@
 |setAdapterLongClick(OnLongImageViewerClick)|覆盖在图片上的布局自定义长按事件,需要实现onImageViewerClick方法返回false关闭图片查看器 |
 |setImageLoad(ImageLoad)|图片加载器、默认实现DefaultImageLoad |
 |setProgressBar(ProgressViewGet<动画控件>)|图片加载时的动画、默认实现DefaultProgressBarGet |
-```
 
-```
+
+
 |MyImageViewerAdapter（指示器类型）|说明|
 |:---|:---|
 |IndicatorType.NULL|无指示器 |
@@ -57,9 +57,9 @@
 |IndicatorType.NUMBER_TOP| 顶部数字指示器 |
 |IndicatorType.ROUND_BOTTOM|底部圆形指示器|
 |IndicatorType.ROUND_TOP|顶部圆形指示器 |
-```
 
-```
+
+
 |ITConfig方法|说明|
 |:---|:---|
 |enableReadMode(boolean)|是否开启阅读模式，针对长图默认适宽显示 |
@@ -67,6 +67,6 @@
 |readModeRule（float）|自定义长图的判断标准，默认视图高度的1.5倍|
 |noThumbWhenCached()|当有缓存的时候不显示预览图，直接显示原图 |
 |noThumb()|不显示预览图 |
-```
+
 
 
