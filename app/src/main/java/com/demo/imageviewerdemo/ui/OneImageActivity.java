@@ -115,63 +115,50 @@ public class OneImageActivity extends AppCompatActivity implements
             //覆盖在图片上的布局(多张图片时默认底部圆形指示器布局)
             imageViewer.setAdapter(new MyImageViewerAdapter(mIndicatorType));
         }
-        if (mViewerAdapterItemLayout.isChecked()){
+        if (mViewerAdapterItemLayout.isChecked()) {
             //覆盖在图片上的布局(自定义布局需要继承ImageViewerAdapter)
             imageViewer.setAdapter(new ItemImageViewerAdapter());
         }
-        if (mViewerAdapterClick.isChecked()){
+        if (mViewerAdapterClick.isChecked()) {
             //覆盖在图片上的布局自定义长按事件
             imageViewer.setAdapterClick(new ImageViewerAdapter.OnImageViewerClick() {
                 @Override
                 public boolean onImageViewerClick(View v, int pos) {
-                    Toast.makeText(OneImageActivity.this,"点击图片",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OneImageActivity.this, "点击图片", Toast.LENGTH_SHORT).show();
                     //返回false关闭图片查看器
                     return true;
                 }
             });
         }
-       if (mViewerAdapterLongClick.isChecked()){
-           //覆盖在图片上的布局自定义长按事件
-           imageViewer.setAdapterLongClick(new ImageViewerAdapter.OnLongImageViewerClick() {
-               @Override
-               public void onLongImageViewerClick(View v, int pos) {
-                   Toast.makeText(OneImageActivity.this,"长按图片",Toast.LENGTH_SHORT).show();
-               }
-           });
-       }
-       if(mViewerLoad.isChecked()){
-           //图片加载器（默认实现DefaultImageLoad、自定义需要继承ImageLoad）因为要下载到本地所以需要读写权限
-           //imageViewer.setImageLoad(new DefaultImageLoad());
-           //为看清加载进度可以 ImageViewerUtil.isSleep做加载停顿。PS：正式用的时候不要把isSleep改为true
-           ImageViewerUtil.isSleep = true;
-           //自定义一个不需要读写权限的加载器
-           imageViewer.setImageLoad(new ItemImageLoad());
-       }
+        if (mViewerAdapterLongClick.isChecked()) {
+            //覆盖在图片上的布局自定义长按事件
+            imageViewer.setAdapterLongClick(new ImageViewerAdapter.OnLongImageViewerClick() {
+                @Override
+                public void onLongImageViewerClick(View v, int pos) {
+                    Toast.makeText(OneImageActivity.this, "长按图片", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        if (mViewerLoad.isChecked()) {
+            //图片加载器（默认实现DefaultImageLoad、自定义需要继承ImageLoad）因为要下载到本地所以需要读写权限
+            //imageViewer.setImageLoad(new DefaultImageLoad());
+            //为看清加载进度可以 ImageViewerUtil.isSleep做加载停顿。PS：正式用的时候不要把isSleep改为true
+            ImageViewerUtil.isSleep = true;
+            //自定义一个不需要读写权限的加载器
+            imageViewer.setImageLoad(new ItemImageLoad());
+        }
 
-       if (mViewerLoading.isChecked()){
-           //图片加载时的动画（默认实现DefaultProgressBarGet、自定义需要继承ProgressViewGet<动画控件>）
-           //已经写好不知进度的动画LoadingView、CustomLoadingView，知道动画的RingLoadingView，具体按项目要求更改
-           //为看清加载进度可以 ImageViewerUtil.isSleep做加载停顿。PS：正式用的时候不要把isSleep改为true
-           ImageViewerUtil.isSleep = true;
-           imageViewer.setProgressBar(new ItemProgressBarGet());
-       }
-
-
+        if (mViewerLoading.isChecked()) {
+            //图片加载时的动画（默认实现DefaultProgressBarGet、自定义需要继承ProgressViewGet<动画控件>）
+            //已经写好不知进度的动画LoadingView、CustomLoadingView，知道动画的RingLoadingView，具体按项目要求更改
+            //为看清加载进度可以 ImageViewerUtil.isSleep做加载停顿。PS：正式用的时候不要把isSleep改为true
+            ImageViewerUtil.isSleep = true;
+            imageViewer.setProgressBar(new ItemProgressBarGet());
+        }
 
 
+        //开始创建显示
         imageViewer.show();
-                /*.setImageLoad(new MyImageLoad())
-                .setProgressBar(new ItemProgressBarGet())
-                .setNowIndex(0)
-                .setAdapterLongClick(new ImageViewerAdapter.OnLongImageViewerClick() {
-                    @Override
-                    public void onLongImageViewerClick(View v, int pos) {
-                        Toast.makeText(v.getContext(),"点击了"+pos,Toast.LENGTH_LONG).show();
-                    }
-                })
-                .setPageTransformer(new GalleryTransformer())
-                .setShowMore(true)
-                .setAdapter(new MyImageViewerAdapter(IndicatorType.NUMBER_TOP))*/
 
     }
 

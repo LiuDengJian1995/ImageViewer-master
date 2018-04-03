@@ -170,6 +170,7 @@ public class ImageViewer implements DialogInterface.OnShowListener,
         return dialogStyle;
     }*/
 
+    /**开始创建显示*/
     public ImageViewer show() {
         build.checkParam();
         mDialog = new AlertDialog.Builder(mContext, R.style.MyDialogStyle)
