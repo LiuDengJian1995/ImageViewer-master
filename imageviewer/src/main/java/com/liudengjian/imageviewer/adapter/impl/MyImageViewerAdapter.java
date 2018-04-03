@@ -86,11 +86,9 @@ public class MyImageViewerAdapter extends ImageViewerAdapter {
             } else if (type == IndicatorType.ROUND_TOP) {
                 indicator = new RoundPageIndicator(viewPager.getContext());
                 topPanel.addView(indicator);
-                indicator.setTranslationY(-dpToPx(56));
             } else if (type == IndicatorType.NUMBER_TOP) {
                 indicator = new NumberPageIndicator(viewPager.getContext());
                 topPanel.addView(indicator);
-                indicator.setTranslationY(-dpToPx(56));
             } else if (type == IndicatorType.NULL) {
                 indicator = new RoundPageIndicator(viewPager.getContext());
                 relativeLayout.addView(indicator);
@@ -129,8 +127,6 @@ public class MyImageViewerAdapter extends ImageViewerAdapter {
         topPanel.setTranslationY(-dpToPx(56) * range * 4);
         if (type == IndicatorType.ROUND_BOTTOM || type == IndicatorType.NUMBER_BOTTOM) {
             indicator.setTranslationY(dpToPx(80) * range * 4);
-        } else {
-            indicator.setTranslationY(-dpToPx(56) * range * 4);
         }
 
     }
@@ -186,15 +182,16 @@ public class MyImageViewerAdapter extends ImageViewerAdapter {
         topPanel.animate().translationY(-dpToPx(56)).setDuration(200).start();
         if (type == IndicatorType.ROUND_BOTTOM || type == IndicatorType.NUMBER_BOTTOM) {
             indicator.animate().translationY(dpToPx(80)).setDuration(200).start();
-        } else {
-            indicator.animate().translationY(-dpToPx(56)).setDuration(200).start();
         }
 
     }
 
     public void showPanel() {
         topPanel.animate().translationY(0).setDuration(200).start();
-        indicator.animate().translationY(0).setDuration(200).start();
+        if (type == IndicatorType.ROUND_BOTTOM || type == IndicatorType.NUMBER_BOTTOM) {
+            indicator.animate().translationY(0).setDuration(200).start();
+        }
+
     }
 
 
