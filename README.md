@@ -105,6 +105,10 @@ compile project(':imageviewer')
 |noThumb()|不显示预览图 |
 
 
+### 关于作者
+    刘登建<br>
+    贵州遵义<br>
+	QQ：1044946823<br>
 
 ## 致谢
 [ImageTrans](https://github.com/wufenglincheng/ImageTrans) 
