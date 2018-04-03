@@ -183,7 +183,6 @@ public class MyImageViewerAdapter extends ImageViewerAdapter {
         if (type == IndicatorType.ROUND_BOTTOM || type == IndicatorType.NUMBER_BOTTOM) {
             indicator.animate().translationY(dpToPx(80)).setDuration(200).start();
         }
-
     }
 
     public void showPanel() {

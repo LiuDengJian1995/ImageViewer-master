@@ -37,15 +37,6 @@ public class ImageViewer implements DialogInterface.OnShowListener,
     private ImageViewerBuild build;
     private DialogView dialogView;
     private Context mContext;
-    private ViewPager.PageTransformer pageViewerformer;
-    /**
-     * 查看更多布局
-     */
-    private MoreViewInterface moreView;
-    /**
-     * 是否显示查看更多布局
-     */
-    public boolean isShowMore = false;
 
     public static ImageViewer with(Context context) {
         return new ImageViewer(context);
