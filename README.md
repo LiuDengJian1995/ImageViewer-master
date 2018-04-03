@@ -106,3 +106,6 @@ compile project(':imageviewer')
 
 
 
+## 致谢
+[ImageTrans](https://github.com/wufenglincheng/ImageTrans) 
+
