@@ -5,8 +5,17 @@
 
 ## 使用步骤
 
-#### Step 1.依赖banner
-Gradle 
+#### Step 1.依赖imageviewer
+Gradle
+```groovy
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
 ```groovy
 dependencies{
     compile 'com.github.LiuDengJian1995:ImageViewer-master:V1.0'  //最新版本
