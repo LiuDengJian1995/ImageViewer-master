@@ -199,4 +199,20 @@ public class ImageViewer implements DialogInterface.OnShowListener,
         dialogView.onDismiss(mDialog);
     }
 
+
+    public Dialog getDialog() {
+        return mDialog;
+    }
+
+    public ImageViewerBuild getBuild() {
+        return build;
+    }
+
+    public DialogView getDialogView() {
+        return dialogView;
+    }
+
+    public Context getContext() {
+        return mContext;
+    }
 }
