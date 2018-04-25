@@ -3,10 +3,12 @@ package com.liudengjian.imageviewer;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.liudengjian.imageviewer.adapter.ImageViewerAdapter;
 import com.liudengjian.imageviewer.config.ITConfig;
@@ -37,12 +39,13 @@ public class ImageViewer implements DialogInterface.OnShowListener,
     private ImageViewerBuild build;
     private DialogView dialogView;
     private Context mContext;
+    private boolean isShowBar = false; //是否显示状态栏
 
     public static ImageViewer with(Context context) {
         return new ImageViewer(context);
     }
 
-    ImageViewer(Context context) {
+    private ImageViewer(Context context) {
         this.mContext = context;
         ImageViewerUtil.init(context);
         build = new ImageViewerBuild(context);
@@ -66,6 +69,11 @@ public class ImageViewer implements DialogInterface.OnShowListener,
         build.imageList = new ArrayList<>();
         build.imageList.add(image);
         return this;
+    }
+
+    /**设置是否显示状态栏*/
+    public void setShowBar(boolean showBar) {
+        isShowBar = showBar;
     }
 
     /**多张图片的左右滑动动画*/
@@ -164,9 +172,22 @@ public class ImageViewer implements DialogInterface.OnShowListener,
     /**开始创建显示*/
     public ImageViewer show() {
         build.checkParam();
-        mDialog = new AlertDialog.Builder(mContext, R.style.MyDialogStyle)
-                .setView(createView())
-                .create();
+        if (isShowBar){
+            mDialog = new Dialog(mContext){
+                @Override
+                protected void onStart() {
+                    if (getWindow()!=null){
+                        getWindow().setBackgroundDrawable(new ColorDrawable(0x00000000));
+                        getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+                    }
+                }
+            };
+            mDialog.setContentView(createView());
+        }else{
+            mDialog = new AlertDialog.Builder(mContext, R.style.MyDialogStyle)
+                    .setView(createView())
+                    .create();
+        }
         build.dialog = mDialog;
         mDialog.setOnShowListener(this);
         mDialog.setOnKeyListener(this);
@@ -199,4 +220,20 @@ public class ImageViewer implements DialogInterface.OnShowListener,
         dialogView.onDismiss(mDialog);
     }
 
+
+    public Dialog getDialog() {
+        return mDialog;
+    }
+
+    public ImageViewerBuild getBuild() {
+        return build;
+    }
+
+    public DialogView getDialogView() {
+        return dialogView;
+    }
+
+    public Context getContext() {
+        return mContext;
+    }
 }
