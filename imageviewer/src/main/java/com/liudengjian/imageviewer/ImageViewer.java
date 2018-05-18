@@ -1,4 +1,4 @@
-package com.liudengjian.imageviewer;
+﻿package com.liudengjian.imageviewer;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -42,10 +42,7 @@ public class ImageViewer implements DialogInterface.OnShowListener,
     private DialogView dialogView;
     private Context mContext;
     private boolean isShowBar = false; //是否显示状态栏
-<<<<<<< HEAD
     private MySensorHelper helper;
-=======
->>>>>>> c42ae8e699b15a2705adf4b61131ae367314c95d
 
     public static ImageViewer with(Context context) {
         return new ImageViewer(context);
@@ -83,18 +80,13 @@ public class ImageViewer implements DialogInterface.OnShowListener,
         return this;
     }
 
-<<<<<<< HEAD
     /**
      * 设置是否显示状态栏
      */
-=======
-    /**设置是否显示状态栏*/
->>>>>>> c42ae8e699b15a2705adf4b61131ae367314c95d
     public void setShowBar(boolean showBar) {
         isShowBar = showBar;
     }
 
-<<<<<<< HEAD
     /***
      * 设置是否重力系统传感器横竖屏显示
      * @param isForceScreen 退出查看器时是否强行转屏
@@ -111,9 +103,6 @@ public class ImageViewer implements DialogInterface.OnShowListener,
     /**
      * 多张图片的左右滑动动画
      */
-=======
-    /**多张图片的左右滑动动画*/
->>>>>>> c42ae8e699b15a2705adf4b61131ae367314c95d
     public ImageViewer setPageTransformer(ViewPager.PageTransformer pageViewerformer) {
         build.pageTransformer = pageViewerformer;
         return this;
@@ -212,7 +201,6 @@ public class ImageViewer implements DialogInterface.OnShowListener,
         return dialogStyle;
     }*/
 
-<<<<<<< HEAD
     /**
      * 开始创建显示
      */
@@ -231,23 +219,12 @@ public class ImageViewer implements DialogInterface.OnShowListener,
                 @Override
                 protected void onStart() {
                     if (getWindow() != null) {
-=======
-    /**开始创建显示*/
-    public ImageViewer show() {
-        build.checkParam();
-        if (isShowBar){
-            mDialog = new Dialog(mContext){
-                @Override
-                protected void onStart() {
-                    if (getWindow()!=null){
->>>>>>> c42ae8e699b15a2705adf4b61131ae367314c95d
                         getWindow().setBackgroundDrawable(new ColorDrawable(0x00000000));
                         getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                     }
                 }
             };
             mDialog.setContentView(createView());
-<<<<<<< HEAD
         } else {
             AlertDialog dialog = new AlertDialog(mContext, R.style.MyDialogStyle) {
                 @Override
@@ -260,12 +237,6 @@ public class ImageViewer implements DialogInterface.OnShowListener,
             };
             dialog.setView(createView());
             mDialog = dialog;
-=======
-        }else{
-            mDialog = new AlertDialog.Builder(mContext, R.style.MyDialogStyle)
-                    .setView(createView())
-                    .create();
->>>>>>> c42ae8e699b15a2705adf4b61131ae367314c95d
         }
         build.dialog = mDialog;
         mDialog.setOnShowListener(this);
