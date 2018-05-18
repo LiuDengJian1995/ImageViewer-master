@@ -18,7 +18,7 @@ allprojects {
 
 ```groovy
 dependencies{
-   compile 'com.github.LiuDengJian1995:ImageViewer-master:1.0.1'  //最新版本
+   compile 'com.github.LiuDengJian1995:ImageViewer-master:1.0.31'  //最新版本
 }
 ```
 或者引用本地lib
@@ -65,6 +65,7 @@ compile project(':imageviewer')
                      .setProgressBar(new ProgressViewGet())
 		     //设置是否重力系统传感器横竖屏显示,传入boolean类型表示退出查看器时是否强行转屏
 		     //设置横竖屏显示建议配置ITConfig里的enableReadMode方法为false
+		     //PS：在对应的activity配置文件加 android:configChanges="orientation|keyboardHidden|screenSize"
 		     .setShowScreen(true)
 		     //设置是否显示状态栏
 		     .setShowBar(true)
@@ -88,7 +89,7 @@ compile project(':imageviewer')
 |setAdapterLongClick(OnLongImageViewerClick)|覆盖在图片上的布局自定义长按事件,需要实现onImageViewerClick方法返回false关闭图片查看器 |
 |setImageLoad(ImageLoad)|图片加载器、默认实现DefaultImageLoad |
 |setProgressBar(ProgressViewGet<动画控件>)|图片加载时的动画、默认实现DefaultProgressBarGet |
-|setShowScreen(boolean isForceScreen)|设置是否重力系统传感器横竖屏显示，isForceScreen 退出查看器时是否强行转屏 |
+|setShowScreen(boolean isForceScreen)|设置是否重力系统传感器横竖屏显示，isForceScreen 退出查看器时是否强行转屏 PS：在对应的activity配置文件加 android:configChanges="orientation|keyboardHidden|screenSize"|
 |setShowBar(boolean)|设置是否显示状态栏 true显示false不显示  |
 	
 
