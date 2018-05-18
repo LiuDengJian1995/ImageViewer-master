@@ -123,3 +123,7 @@ compile project(':imageviewer')
 ## 致谢
 [ImageTrans](https://github.com/wufenglincheng/ImageTrans) 
 
+## 更新说明
+ * 添加查看器的横竖屏切换
+ * 添加查看器的状态栏显示
+
