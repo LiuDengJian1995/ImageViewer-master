@@ -1,4 +1,4 @@
-package com.liudengjian.imageviewer;
+﻿package com.liudengjian.imageviewer;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -83,8 +83,9 @@ public class ImageViewer implements DialogInterface.OnShowListener,
     /**
      * 设置是否显示状态栏
      */
-    public void setShowBar(boolean showBar) {
+    public ImageViewer setShowBar(boolean showBar) {
         isShowBar = showBar;
+        return this;
     }
 
     /***
