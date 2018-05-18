@@ -1,4 +1,4 @@
-﻿package com.liudengjian.imageviewer;
+package com.liudengjian.imageviewer;
 
 import android.app.Activity;
 import android.app.Dialog;
