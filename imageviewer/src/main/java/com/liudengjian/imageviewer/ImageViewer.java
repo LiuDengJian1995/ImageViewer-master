@@ -90,7 +90,6 @@ public class ImageViewer implements DialogInterface.OnShowListener,
     /***
      * 设置是否重力系统传感器横竖屏显示
      * @param isForceScreen 退出查看器时是否强行转屏
-     * @return
      */
     public ImageViewer setShowScreen(boolean isForceScreen) {
         if (mContext instanceof Activity) {
@@ -186,7 +185,7 @@ public class ImageViewer implements DialogInterface.OnShowListener,
         return this;
     }
 
-    public View createView() {
+    private View createView() {
         dialogView = new DialogView(mContext, build);
         return dialogView;
     }
