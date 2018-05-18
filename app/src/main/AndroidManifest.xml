@@ -20,8 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.OneImageActivity" />
-        <activity android:name=".ui.MultiImageActivity"></activity>
+        <activity android:name=".ui.OneImageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.MultiImageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"></activity>
     </application>
 
 </manifest>

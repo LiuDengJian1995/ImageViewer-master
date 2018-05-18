@@ -2,16 +2,21 @@ package com.demo.imageviewerdemo.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Explode;
+import android.transition.Fade;
 import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -25,6 +30,7 @@ import com.liudengjian.imageviewer.anim.GalleryTransformer;
 import com.liudengjian.imageviewer.anim.RotateDownPageTransformer;
 import com.liudengjian.imageviewer.anim.ViewpagerTransformAnim;
 import com.liudengjian.imageviewer.anim.ZoomOutPageTransformer;
+import com.liudengjian.imageviewer.config.ITConfig;
 import com.liudengjian.imageviewer.listener.SourceImageViewGet;
 import com.liudengjian.imageviewer.util.ImageViewerUtil;
 
@@ -56,6 +62,7 @@ public class MultiImageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_multi_image);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
@@ -113,6 +120,8 @@ public class MultiImageActivity extends AppCompatActivity {
                                 }
                             })
                             .setNowIndex(position)
+                            .setShowScreen(true)
+                            .setConfig(new ITConfig().enableReadMode(false))
                             .setPageTransformer(transformer)
                             .setShowMore(true)
                             .show();

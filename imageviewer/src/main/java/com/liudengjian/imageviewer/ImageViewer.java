@@ -1,5 +1,6 @@
 package com.liudengjian.imageviewer;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,6 +17,7 @@ import com.liudengjian.imageviewer.listener.ProgressViewGet;
 import com.liudengjian.imageviewer.listener.SourceImageViewGet;
 import com.liudengjian.imageviewer.net.ImageLoad;
 import com.liudengjian.imageviewer.util.ImageViewerUtil;
+import com.liudengjian.imageviewer.util.MySensorHelper;
 import com.liudengjian.imageviewer.view.DialogView;
 import com.liudengjian.imageviewer.view.interfaces.MoreViewInterface;
 import com.liudengjian.imageviewer.view.util.ScaleType;
@@ -40,6 +42,7 @@ public class ImageViewer implements DialogInterface.OnShowListener,
     private DialogView dialogView;
     private Context mContext;
     private boolean isShowBar = false; //是否显示状态栏
+    private MySensorHelper helper;
 
     public static ImageViewer with(Context context) {
         return new ImageViewer(context);
@@ -51,32 +54,55 @@ public class ImageViewer implements DialogInterface.OnShowListener,
         build = new ImageViewerBuild(context);
     }
 
-    /**查看器开始的索引*/
+    /**
+     * 查看器开始的索引
+     */
     public ImageViewer setNowIndex(int index) {
         build.clickIndex = index;
         build.nowIndex = index;
         return this;
     }
 
-    /**图片地址集合*/
+    /**
+     * 图片地址集合
+     */
     public ImageViewer setImageList(List<String> imageList) {
         build.imageList = imageList;
         return this;
     }
 
-    /**图片地址*/
+    /**
+     * 图片地址
+     */
     public ImageViewer setImageList(String image) {
         build.imageList = new ArrayList<>();
         build.imageList.add(image);
         return this;
     }
 
-    /**设置是否显示状态栏*/
+    /**
+     * 设置是否显示状态栏
+     */
     public void setShowBar(boolean showBar) {
         isShowBar = showBar;
     }
 
-    /**多张图片的左右滑动动画*/
+    /***
+     * 设置是否重力系统传感器横竖屏显示
+     * @param isForceScreen 退出查看器时是否强行转屏
+     * @return
+     */
+    public ImageViewer setShowScreen(boolean isForceScreen) {
+        if (mContext instanceof Activity) {
+            helper = new MySensorHelper(((Activity) mContext), isForceScreen);
+            helper.enable();
+        }
+        return this;
+    }
+
+    /**
+     * 多张图片的左右滑动动画
+     */
     public ImageViewer setPageTransformer(ViewPager.PageTransformer pageViewerformer) {
         build.pageTransformer = pageViewerformer;
         return this;
@@ -107,7 +133,9 @@ public class ImageViewer implements DialogInterface.OnShowListener,
         return this;
     }
 
-    /** //覆盖在图片上的布局(自定义布局需要继承ImageViewerAdapter)*/
+    /**
+     * //覆盖在图片上的布局(自定义布局需要继承ImageViewerAdapter)
+     */
     public ImageViewer setAdapter(ImageViewerAdapter adapter) {
         build.imageViewerAdapter = adapter;
         return this;
@@ -129,13 +157,17 @@ public class ImageViewer implements DialogInterface.OnShowListener,
         return this;
     }
 
-    /**设置图片加载器*/
+    /**
+     * 设置图片加载器
+     */
     public ImageViewer setImageLoad(ImageLoad imageLoad) {
         build.imageLoad = imageLoad;
         return this;
     }
 
-    /**图片裁剪类型*/
+    /**
+     * 图片裁剪类型
+     */
     public ImageViewer setScaleType(ScaleType scaleType) {
         build.scaleType = scaleType;
         return this;
@@ -154,7 +186,7 @@ public class ImageViewer implements DialogInterface.OnShowListener,
         return this;
     }
 
-    private View createView() {
+    public View createView() {
         dialogView = new DialogView(mContext, build);
         return dialogView;
     }
@@ -169,24 +201,42 @@ public class ImageViewer implements DialogInterface.OnShowListener,
         return dialogStyle;
     }*/
 
-    /**开始创建显示*/
+    /**
+     * 开始创建显示
+     */
     public ImageViewer show() {
         build.checkParam();
-        if (isShowBar){
-            mDialog = new Dialog(mContext){
+        if (isShowBar) {
+            mDialog = new Dialog(mContext) {
+                @Override
+                public void dismiss() {
+                    if (helper != null) {
+                        helper.disable();
+                    }
+                    super.dismiss();
+                }
+
                 @Override
                 protected void onStart() {
-                    if (getWindow()!=null){
+                    if (getWindow() != null) {
                         getWindow().setBackgroundDrawable(new ColorDrawable(0x00000000));
                         getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                     }
                 }
             };
             mDialog.setContentView(createView());
-        }else{
-            mDialog = new AlertDialog.Builder(mContext, R.style.MyDialogStyle)
-                    .setView(createView())
-                    .create();
+        } else {
+            AlertDialog dialog = new AlertDialog(mContext, R.style.MyDialogStyle) {
+                @Override
+                public void dismiss() {
+                    if (helper != null) {
+                        helper.disable();
+                    }
+                    super.dismiss();
+                }
+            };
+            dialog.setView(createView());
+            mDialog = dialog;
         }
         build.dialog = mDialog;
         mDialog.setOnShowListener(this);
