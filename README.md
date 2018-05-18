@@ -63,6 +63,11 @@ compile project(':imageviewer')
                       //图片加载时的动画（默认实现DefaultProgressBarGet、自定义需要继承ProgressViewGet<动画控件>）
                      //已经写好不知进度（循环）的动画LoadingView、CustomLoadingView，知道动画的RingLoadingView，具体按项目要求更改
                      .setProgressBar(new ProgressViewGet())
+		     //设置是否重力系统传感器横竖屏显示,传入boolean类型表示退出查看器时是否强行转屏
+		     //设置横竖屏显示建议配置ITConfig里的enableReadMode方法为false
+		     .setShowScreen(true)
+		     //设置是否显示状态栏
+		     .setShowBar(true)
                      //图片查看器的配置文件
                      setConfig(new ITConfig())
                     //开始创建显示
@@ -83,6 +88,9 @@ compile project(':imageviewer')
 |setAdapterLongClick(OnLongImageViewerClick)|覆盖在图片上的布局自定义长按事件,需要实现onImageViewerClick方法返回false关闭图片查看器 |
 |setImageLoad(ImageLoad)|图片加载器、默认实现DefaultImageLoad |
 |setProgressBar(ProgressViewGet<动画控件>)|图片加载时的动画、默认实现DefaultProgressBarGet |
+|setShowScreen(boolean isForceScreen)|设置是否重力系统传感器横竖屏显示，isForceScreen 退出查看器时是否强行转屏 |
+|setShowBar(boolean)|设置是否显示状态栏 true显示false不显示  |
+	
 
 
 
