@@ -90,7 +90,7 @@ compile project(':imageviewer')
 |setImageLoad(ImageLoad)|图片加载器、默认实现DefaultImageLoad |
 |setProgressBar(ProgressViewGet<动画控件>)|图片加载时的动画、默认实现DefaultProgressBarGet |
 |setShowScreen(boolean isForceScreen)|设置是否重力系统传感器横竖屏显示，isForceScreen 退出查看器时是否强行转屏 |
-|设置横竖屏需要在对应的activity配置文件加| android:configChanges="orientation|keyboardHidden|screenSize"|
+|设置横竖屏需要在对应的activity配置文件加| android:configChanges="orientation，keyboardHidden，screenSize"|
 |setShowBar(boolean)|设置是否显示状态栏 true显示false不显示  |
 	
 
